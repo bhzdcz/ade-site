@@ -1,0 +1,16 @@
+.DS_Store
+.AppleDouble
+.LSOverride
+Thumbs.db
+Desktop.ini
+*.swp
+*.swo
+*~
+.idea/
+.vscode/
+*.log
+.env
+.env.*
+node_modules/
+dist/
+.cache/

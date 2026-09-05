@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>ADE — AI-native SDLC</title>
+  <meta name="description" content="ADE: AI-native SDLC — artifacts on rails, humans at the gates. Intent → spec → plan → review → gates." />
+  <link rel="canonical" href="https://ade.ir/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://ade.ir/" />
+  <meta property="og:title" content="ADE — AI-native SDLC" />
+  <meta property="og:description" content="AI-native SDLC — artifacts on rails, humans at the gates." />
+  <meta property="og:image" content="https://ade.ir/assets/og.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="ADE — AI-native SDLC" />
+  <meta name="twitter:description" content="AI-native SDLC — artifacts on rails, humans at the gates." />
+  <meta name="twitter:image" content="https://ade.ir/assets/og.png" />
+  <meta name="theme-color" content="#0B0D12" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header" role="banner">
+    <div class="wrap header-inner">
+      <a class="logo" href="#hero" aria-label="ADE home">
+        <span class="logo-mark" aria-hidden="true">■</span>
+        <span class="pixel-label">ADE</span>
+      </a>
+      <nav class="mini-rail" aria-label="Sections">
+        <a href="#problem">Problem</a>
+        <a href="#chain">Chain</a>
+        <a href="#how">How</a>
+        <a href="#scope">Scope</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <section id="hero" class="section hero" aria-labelledby="hero-title">
+      <div class="wrap hero-inner">
+        <p class="pixel-label hero-kicker">AI-NATIVE SDLC</p>
+        <h1 id="hero-title" class="hero-title" data-hero-wordmark>
+          <span class="texel" style="--i:0">A</span><span class="texel" style="--i:1">D</span><span class="texel" style="--i:2">E</span>
+        </h1>
+        <p class="hero-value">AI-native SDLC — artifacts on rails, humans at the gates</p>
+        <div class="cta-row">
+          <a class="btn btn-primary" href="https://github.com/bhzdcz/ade">View on GitHub</a>
+          <a class="btn btn-secondary" href="https://github.com/bhzdcz/ade/blob/main/docs/how-to-run.md">How to run</a>
+        </div>
+        <a class="scroll-hint" href="#problem" aria-label="Scroll to problem">
+          <span class="chevron" aria-hidden="true"></span>
+        </a>
+      </div>
+    </section>
+
+    <section id="problem" class="section" aria-labelledby="problem-title">
+      <div class="wrap">
+        <h2 id="problem-title" class="pixel-label section-label">Problem</h2>
+        <div class="panel grid-3">
+          <article class="card">
+            <h3>Chat isn’t a handoff</h3>
+            <p>Thread history is not a durable artifact. Decisions vanish; next agent (or human) starts cold.</p>
+          </article>
+          <article class="card">
+            <h3>Code isn’t the bottleneck</h3>
+            <p>Models write fast. The hard parts are intent, review judgment, and keeping the loop honest.</p>
+          </article>
+          <article class="card">
+            <h3>Controls assume a human did every step</h3>
+            <p>Classic process gates don’t fit AI-assisted work. You need rails that still leave humans at the gates.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="chain" class="section" aria-labelledby="chain-title">
+      <div class="wrap">
+        <h2 id="chain-title" class="pixel-label section-label">Artifact chain</h2>
+        <p class="lede">One loop. Artifacts on rails — not a roster of chat personas.</p>
+        <ol class="chain-rail" data-chain-rail>
+          <li class="chain-node" data-node="intent"><span class="node-dot"></span><span class="node-name">intent</span><span class="node-cap">What we want</span></li>
+          <li class="chain-node" data-node="spec"><span class="node-dot"></span><span class="node-name">spec</span><span class="node-cap">What “done” means</span></li>
+          <li class="chain-node" data-node="plan"><span class="node-dot"></span><span class="node-name">plan</span><span class="node-cap">How we’ll ship</span></li>
+          <li class="chain-node" data-node="diff"><span class="node-dot"></span><span class="node-name">diff+tests</span><span class="node-cap">The change</span></li>
+          <li class="chain-node" data-node="review"><span class="node-dot"></span><span class="node-name">REVIEW</span><span class="node-cap">Human judgment</span></li>
+          <li class="chain-node chain-node--gate" data-node="gates"><span class="node-dot"></span><span class="node-name">gates</span><span class="node-cap">Must-holds</span></li>
+          <li class="chain-node" data-node="maintain"><span class="node-dot"></span><span class="node-name">Maintain</span><span class="node-cap">Keep it true</span></li>
+          <li class="chain-node chain-node--loop" data-node="new-intent"><span class="node-dot"></span><span class="node-name">new intent</span><span class="node-cap">Loop again</span></li>
+        </ol>
+      </div>
+    </section>
+
+    <section id="how" class="section" aria-labelledby="how-title">
+      <div class="wrap">
+        <h2 id="how-title" class="pixel-label section-label">How it runs</h2>
+        <div class="panel how-grid">
+          <article class="card">
+            <h3>Git + Claude Code + PRs</h3>
+            <p>Work lives in the repo. Agents propose; pull requests carry the diff. No separate console pretending to be the source of truth.</p>
+          </article>
+          <article class="card">
+            <h3>Hooks as must-holds</h3>
+            <p>Automated checks hold the line on structure and contracts so humans spend attention on judgment, not ritual.</p>
+          </article>
+          <article class="card">
+            <h3>Humans at the gates</h3>
+            <p>Review and accept/reject stay with people. The rail moves artifacts; it does not replace ownership.</p>
+          </article>
+        </div>
+        <div class="cta-row">
+          <a class="btn btn-secondary" href="https://github.com/bhzdcz/ade/blob/main/docs/how-to-run.md">How to run</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="scope" class="section" aria-labelledby="scope-title">
+      <div class="wrap">
+        <h2 id="scope-title" class="pixel-label section-label">What’s in v1 / not</h2>
+        <div class="panel scope-grid">
+          <div class="card scope-in">
+            <h3 class="pixel-label tiny">In v1</h3>
+            <ul>
+              <li>Playbook loop &amp; artifact contracts</li>
+              <li>Hooks as must-holds</li>
+              <li>Dogfood on real intents</li>
+              <li>This marketing landing (links only)</li>
+            </ul>
+          </div>
+          <div class="card scope-out">
+            <h3 class="pixel-label tiny">Not in v1</h3>
+            <ul>
+              <li>Live watcher / multi-harness runtime</li>
+              <li>In-browser dashboard or auth</li>
+              <li>This site as a platform console</li>
+              <li>Public product source (repo may stay private)</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer id="footer" class="site-footer" role="contentinfo">
+    <div class="wrap footer-inner">
+      <p class="pixel-label tiny">ADE</p>
+      <p class="footer-links">
+        <a href="https://ade.ir/">ade.ir</a>
+        <span aria-hidden="true">·</span>
+        <a href="https://github.com/bhzdcz/ade">github.com/bhzdcz/ade</a>
+        <span aria-hidden="true">·</span>
+        <a href="https://github.com/bhzdcz/ade-site">ade-site</a>
+      </p>
+      <p class="muted small">© 2026 Behzad · MIT · Pixel colophon: 4px texels, dark-first.</p>
+    </div>
+  </footer>
+
+  <script src="main.js" defer></script>
+</body>
+</html>
