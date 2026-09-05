@@ -1,0 +1,15 @@
+{
+  "name": "ade-site",
+  "version": "0.2.0",
+  "private": true,
+  "scripts": {
+    "build": "python3 scripts/build.py",
+    "check": "python3 -m unittest discover -s tests -p 'test_*.py' -v",
+    "test": "playwright test",
+    "preview": "python3 -m http.server 4173 --bind 127.0.0.1 --directory dist"
+  },
+  "devDependencies": {
+    "@axe-core/playwright": "^4.10.2",
+    "@playwright/test": "^1.55.0"
+  }
+}

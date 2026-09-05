@@ -1,0 +1,278 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Get started | ADE</title>
+    <meta
+      name="description"
+      content="Understand ADE, inspect the workflow and install it into your existing Git repository. Public documentation, no account required."
+    />
+    <link rel="canonical" href="https://ade.ir/docs/" />
+    <meta name="theme-color" content="#101412" />
+    <meta property="og:title" content="Get started | ADE" />
+    <meta
+      property="og:description"
+      content="Understand ADE, inspect the workflow and install it into your existing Git repository. Public documentation, no account required."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://ade.ir/docs/" />
+    <meta property="og:image" content="https://ade.ir/assets/og.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="../styles.css" />
+    <script src="../config.js" defer></script>
+    <script src="../main.js" defer></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <header class="site-header">
+      <div class="wrap header-inner">
+        <a class="logo" href="../" aria-label="ADE home"
+          >ADE<span class="logo-caption" aria-hidden="true">/</span></a
+        >
+        <nav aria-label="Main navigation">
+          <a href="../#workflow">Workflow</a><a href="../docs/">Docs</a
+          ><a href="../#setup">Setup</a>
+        </nav>
+        <a class="header-action" href="../#example">Explore ADE ↗</a>
+      </div>
+    </header>
+    <main id="main" class="wrap content-layout">
+      <nav class="docs-nav" aria-label="On this page">
+        <a href="#overview">Overview</a><a href="#installation">Installation</a
+        ><a href="#first-change">Your first change</a
+        ><a href="#example">Worked example</a
+        ><a href="#boundaries">Trust boundaries</a
+        ><a href="#troubleshooting">Troubleshooting</a>
+      </nav>
+      <article class="prose">
+        <p class="eyebrow">Documentation</p>
+        <h1 id="overview">A clearer path from<br />request to review.</h1>
+        <p>
+          ADE is a local toolkit around Claude Code. Your intent, specification
+          and implementation plan live beside your code. Humans own acceptance
+          and release decisions.
+        </p>
+        <p class="notice">
+          The toolkit source is currently private.
+          <a href="mailto:behzad@airoweb.com?subject=ADE%20toolkit%20access"
+            >Request access from Behzad</a
+          >. This guide and the example files are public; no account is needed
+          to read them. An MIT core release is planned.
+        </p>
+        <h2 id="installation">Preview before you install.</h2>
+        <p>
+          Requirements: Python 3.10+, Bash, Git and Claude Code. ADE is tested
+          on macOS and Linux. Windows users can use WSL; native Windows is not
+          currently tested. Your project must already be a Git repository.
+        </p>
+        <p>
+          After receiving a reviewed toolkit checkout or archive, run the script
+          from its directory:
+        </p>
+        <pre><code>python3 /path/to/ade/ade init \
+  --project /path/to/project --dry-run
+
+python3 /path/to/ade/ade init \
+  --project /path/to/project
+
+python3 /path/to/ade/ade doctor \
+  --project /path/to/project</code></pre>
+        <p>
+          Quote paths that contain spaces. No Python packages or network
+          requests are needed. ADE does not include a Claude subscription.
+          Follow
+          <a href="https://code.claude.com/docs/en/setup"
+            >Anthropic’s setup instructions</a
+          >
+          for Claude Code.
+        </p>
+        <h3>What changes in your repository?</h3>
+        <ul>
+          <li>
+            <code>ADE.md</code> provides the workflow instructions. An import is
+            appended to <code>CLAUDE.md</code>.
+          </li>
+          <li>
+            Two local hook entries are merged into
+            <code>.claude/settings.json</code>. Existing permissions and hooks
+            remain.
+          </li>
+          <li>
+            Intent, spec, plan and finding templates; six lifecycle plays; a
+            review policy; example control bands; and a simulated promote script
+            are added.
+          </li>
+          <li>
+            Original settings and context are backed up with an
+            <code>.ade-backup</code> suffix. Existing custom content is
+            preserved; conflicting runtime files stop installation.
+          </li>
+        </ul>
+        <p>
+          Review the installation diff, then restart Claude Code to load the
+          hooks. The doctor command checks registration and file integrity;
+          verify the hooks appear in Claude Code before relying on them.
+        </p>
+        <h2 id="first-change">Start one small change.</h2>
+        <pre><code>python3 /path/to/ade/ade new password-reset \
+  --title "Add password reset" \
+  --project /path/to/project
+
+python3 /path/to/ade/ade status \
+  --project /path/to/project</code></pre>
+        <p>
+          This creates three draft artifacts and selects the active intent. It
+          does not accept the work. Have Claude propose the problem, acceptance
+          criteria and plan in plan mode. A human edits and reviews the draft
+          files in their editor, then sets the plan’s frontmatter to
+          <code>status: accepted</code> when ready.
+        </p>
+        <p>
+          Keep acceptance recorded in the pull request. The hook checks
+          supported edits against that local plan. Normal Claude tool
+          permissions still apply. Do not use shell writes to bypass draft
+          checks.
+        </p>
+        <h2 id="example">Inspect a complete example.</h2>
+        <p>
+          A password-reset feature shows how the files connect. These are
+          illustrative draft artifacts, not a bundled authentication
+          implementation. The application code is yours to build.
+        </p>
+        <p>
+          <a
+            class="button primary"
+            href="../downloads/password-reset.zip"
+            download
+            >Download all three files ↓</a
+          >
+        </p>
+        <details open>
+          <summary>intent.md: the user problem</summary>
+          <p>
+            A user who forgets their password needs support to regain access.
+            Let them request a reset email without revealing whether an address
+            has an account. Keep the existing authentication provider; never log
+            reset tokens.
+          </p>
+          <p>
+            Success means expired and reused links cannot change a password.
+          </p>
+        </details>
+        <details>
+          <summary>spec.md: observable behavior</summary>
+          <ul>
+            <li>Known and unknown emails receive the same public response.</li>
+            <li>Tokens expire after 30 minutes and can be used once.</li>
+            <li>
+              Successful reset invalidates sessions according to the provider’s
+              supported mechanism.
+            </li>
+            <li>
+              Expired, malformed and reused tokens produce an actionable error.
+            </li>
+            <li>Rate limits apply and tokens never appear in logs.</li>
+          </ul>
+        </details>
+        <details>
+          <summary>plan.md: the implementation and checks</summary>
+          <p>
+            Use the existing authentication provider. Add request and
+            confirmation views and connect the existing email template. Keep
+            credentials server-side.
+          </p>
+          <p>
+            Test response parity, expiry, one-time use, rate limits and session
+            invalidation. Exercise success and failure in the browser. A human
+            reviews capabilities and evidence before release through a protected
+            environment.
+          </p>
+        </details>
+        <h2 id="boundaries">Understand the limits.</h2>
+        <p>
+          ADE is a workflow aid. Local files and hooks are editable. They do not
+          authenticate the person named in a plan or attestation, and they are
+          not a security sandbox or compliance certification.
+        </p>
+        <ul>
+          <li>
+            The plan hook covers supported Claude edit tools. Direct editor
+            changes, shell writes, disabled hooks and other agent harnesses are
+            outside it.
+          </li>
+          <li>
+            Canonicalized file paths outside the project are denied. In-project
+            docs, findings, README and designated templates are allowlisted;
+            other edits need an accepted plan.
+          </li>
+          <li>
+            The Bash hook recognizes a limited set of promote patterns. The
+            bundled <code>promote.sh</code> is a simulation with no deployment
+            side effects.
+          </li>
+          <li>
+            Use Git-host review rules and protected deployment environments for
+            real authorization. Keep production credentials outside
+            agent-controlled scripts.
+          </li>
+          <li>
+            ADE itself makes no network requests. Claude Code, your model
+            provider and your Git host have their own data handling policies.
+          </li>
+        </ul>
+        <p>
+          Report vulnerabilities privately to
+          <a href="mailto:behzad@airoweb.com?subject=ADE%20security%20report"
+            >behzad@airoweb.com</a
+          >. Do not include live credentials.
+        </p>
+        <h2 id="troubleshooting">When a check stops you.</h2>
+        <h3>“Missing plan” or “plan must be accepted”</h3>
+        <p>
+          Run <code>ade status</code>. Confirm the active intent matches the
+          change and that a human has reviewed the plan. Do not make the agent
+          approve its own work.
+        </p>
+        <h3>Existing runtime or backup conflict</h3>
+        <p>
+          Back up and compare the existing file with the toolkit version.
+          Reconcile manually and rerun the preview. There is no force-overwrite
+          option.
+        </p>
+        <h3>Missing Python or Claude Code</h3>
+        <p>
+          Install Python 3.10+ for the checks. Claude Code is required to
+          execute the hooks during agent work. Restart Claude after
+          installation.
+        </p>
+        <h3>Remove ADE</h3>
+        <p>
+          Review the installation diff. Remove only ADE’s two hook entries and
+          the <code>@ADE.md</code> import, then delete unmodified ADE files.
+          Preserve custom files and your artifact history. Restore a backup only
+          if it still represents the settings you want.
+        </p>
+      </article>
+    </main>
+    <footer class="site-footer wrap">
+      <div class="footer-brand">
+        <a class="logo" href="../" aria-label="ADE home"
+          >ADE<span class="logo-caption" aria-hidden="true">/</span></a
+        >
+        <p>Reviewable AI work.<br />In your repository.</p>
+      </div>
+      <div class="footer-links">
+        <a href="../docs/">Docs</a><a href="../support/">Support ADE</a
+        ><a href="../privacy/">Privacy</a
+        ><a href="mailto:behzad@airoweb.com">Contact</a>
+      </div>
+      <p class="footer-legal">
+        © 2026 Behzad. Independent project; not affiliated with Anthropic or
+        GitHub.
+      </p>
+    </footer>
+    <p id="copy-status" class="toast" role="status" aria-live="polite"></p>
+  </body>
+</html>

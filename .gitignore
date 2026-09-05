@@ -14,3 +14,10 @@ Desktop.ini
 node_modules/
 dist/
 .cache/
+
+node_modules/
+dist/
+config.js
+__pycache__/
+playwright-report/
+test-results/

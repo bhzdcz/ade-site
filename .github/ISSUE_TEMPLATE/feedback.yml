@@ -1,0 +1,10 @@
+name: Website or walkthrough feedback
+description: Report a broken link, unclear example or accessibility problem.
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: What needs improving?
+      description: Include the page, expected behavior and device/browser if relevant. Never include credentials or private code.
+    validations:
+      required: true

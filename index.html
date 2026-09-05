@@ -1,160 +1,481 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>ADE — AI-native SDLC</title>
-  <meta name="description" content="ADE: AI-native SDLC — artifacts on rails, humans at the gates. Intent → spec → plan → review → gates." />
-  <link rel="canonical" href="https://ade.ir/" />
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://ade.ir/" />
-  <meta property="og:title" content="ADE — AI-native SDLC" />
-  <meta property="og:description" content="AI-native SDLC — artifacts on rails, humans at the gates." />
-  <meta property="og:image" content="https://ade.ir/assets/og.png" />
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="ADE — AI-native SDLC" />
-  <meta name="twitter:description" content="AI-native SDLC — artifacts on rails, humans at the gates." />
-  <meta name="twitter:image" content="https://ade.ir/assets/og.png" />
-  <meta name="theme-color" content="#0B0D12" />
-  <link rel="stylesheet" href="styles.css" />
-</head>
-<body>
-  <a class="skip-link" href="#main">Skip to content</a>
-
-  <header class="site-header" role="banner">
-    <div class="wrap header-inner">
-      <a class="logo" href="#hero" aria-label="ADE home">
-        <span class="logo-mark" aria-hidden="true">■</span>
-        <span class="pixel-label">ADE</span>
-      </a>
-      <nav class="mini-rail" aria-label="Sections">
-        <a href="#problem">Problem</a>
-        <a href="#chain">Chain</a>
-        <a href="#how">How</a>
-        <a href="#scope">Scope</a>
-      </nav>
-    </div>
-  </header>
-
-  <main id="main">
-    <section id="hero" class="section hero" aria-labelledby="hero-title">
-      <div class="wrap hero-inner">
-        <p class="pixel-label hero-kicker">AI-NATIVE SDLC</p>
-        <h1 id="hero-title" class="hero-title" data-hero-wordmark>
-          <span class="texel" style="--i:0">A</span><span class="texel" style="--i:1">D</span><span class="texel" style="--i:2">E</span>
-        </h1>
-        <p class="hero-value">AI-native SDLC — artifacts on rails, humans at the gates</p>
-        <div class="cta-row">
-          <a class="btn btn-primary" href="https://github.com/bhzdcz/ade">View on GitHub</a>
-          <a class="btn btn-secondary" href="https://github.com/bhzdcz/ade/blob/main/docs/how-to-run.md">How to run</a>
-        </div>
-        <a class="scroll-hint" href="#problem" aria-label="Scroll to problem">
-          <span class="chevron" aria-hidden="true"></span>
-        </a>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>ADE | Give AI speed. Keep human judgment.</title>
+    <meta
+      name="description"
+      content="A local workflow toolkit for Claude Code. Keep intent, plans and human review connected in Git. Explore the example or get help setting it up."
+    />
+    <link rel="canonical" href="https://ade.ir/" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://ade.ir/" />
+    <meta
+      property="og:title"
+      content="ADE | Give AI speed. Keep human judgment."
+    />
+    <meta
+      property="og:description"
+      content="Reviewable AI work, in your repository. A practical workflow toolkit for Claude Code."
+    />
+    <meta property="og:image" content="https://ade.ir/assets/og.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="theme-color" content="#101412" />
+    <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="styles.css" />
+    <script src="config.js" defer></script>
+    <script src="main.js" defer></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <header class="site-header">
+      <div class="wrap header-inner">
+        <a class="logo" href="./" aria-label="ADE home"
+          >ADE<span class="logo-caption" aria-hidden="true">/</span></a
+        >
+        <nav aria-label="Main navigation">
+          <a href="#workflow">Workflow</a><a href="docs/">Docs</a
+          ><a href="#setup">Setup</a>
+        </nav>
+        <a class="header-action" href="#example"
+          >Explore ADE <span aria-hidden="true">↗</span></a
+        >
       </div>
-    </section>
-
-    <section id="problem" class="section" aria-labelledby="problem-title">
-      <div class="wrap">
-        <h2 id="problem-title" class="pixel-label section-label">Problem</h2>
-        <div class="panel grid-3">
-          <article class="card">
-            <h3>Chat isn’t a handoff</h3>
-            <p>Thread history is not a durable artifact. Decisions vanish; next agent (or human) starts cold.</p>
-          </article>
-          <article class="card">
-            <h3>Code isn’t the bottleneck</h3>
-            <p>Models write fast. The hard parts are intent, review judgment, and keeping the loop honest.</p>
-          </article>
-          <article class="card">
-            <h3>Controls assume a human did every step</h3>
-            <p>Classic process gates don’t fit AI-assisted work. You need rails that still leave humans at the gates.</p>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section id="chain" class="section" aria-labelledby="chain-title">
-      <div class="wrap">
-        <h2 id="chain-title" class="pixel-label section-label">Artifact chain</h2>
-        <p class="lede">One loop. Artifacts on rails — not a roster of chat personas.</p>
-        <ol class="chain-rail" data-chain-rail>
-          <li class="chain-node" data-node="intent"><span class="node-dot"></span><span class="node-name">intent</span><span class="node-cap">What we want</span></li>
-          <li class="chain-node" data-node="spec"><span class="node-dot"></span><span class="node-name">spec</span><span class="node-cap">What “done” means</span></li>
-          <li class="chain-node" data-node="plan"><span class="node-dot"></span><span class="node-name">plan</span><span class="node-cap">How we’ll ship</span></li>
-          <li class="chain-node" data-node="diff"><span class="node-dot"></span><span class="node-name">diff+tests</span><span class="node-cap">The change</span></li>
-          <li class="chain-node" data-node="review"><span class="node-dot"></span><span class="node-name">REVIEW</span><span class="node-cap">Human judgment</span></li>
-          <li class="chain-node chain-node--gate" data-node="gates"><span class="node-dot"></span><span class="node-name">gates</span><span class="node-cap">Must-holds</span></li>
-          <li class="chain-node" data-node="maintain"><span class="node-dot"></span><span class="node-name">Maintain</span><span class="node-cap">Keep it true</span></li>
-          <li class="chain-node chain-node--loop" data-node="new-intent"><span class="node-dot"></span><span class="node-name">new intent</span><span class="node-cap">Loop again</span></li>
-        </ol>
-      </div>
-    </section>
-
-    <section id="how" class="section" aria-labelledby="how-title">
-      <div class="wrap">
-        <h2 id="how-title" class="pixel-label section-label">How it runs</h2>
-        <div class="panel how-grid">
-          <article class="card">
-            <h3>Git + Claude Code + PRs</h3>
-            <p>Work lives in the repo. Agents propose; pull requests carry the diff. No separate console pretending to be the source of truth.</p>
-          </article>
-          <article class="card">
-            <h3>Hooks as must-holds</h3>
-            <p>Automated checks hold the line on structure and contracts so humans spend attention on judgment, not ritual.</p>
-          </article>
-          <article class="card">
-            <h3>Humans at the gates</h3>
-            <p>Review and accept/reject stay with people. The rail moves artifacts; it does not replace ownership.</p>
-          </article>
-        </div>
-        <div class="cta-row">
-          <a class="btn btn-secondary" href="https://github.com/bhzdcz/ade/blob/main/docs/how-to-run.md">How to run</a>
-        </div>
-      </div>
-    </section>
-
-    <section id="scope" class="section" aria-labelledby="scope-title">
-      <div class="wrap">
-        <h2 id="scope-title" class="pixel-label section-label">What’s in v1 / not</h2>
-        <div class="panel scope-grid">
-          <div class="card scope-in">
-            <h3 class="pixel-label tiny">In v1</h3>
-            <ul>
-              <li>Playbook loop &amp; artifact contracts</li>
-              <li>Hooks as must-holds</li>
-              <li>Dogfood on real intents</li>
-              <li>This marketing landing (links only)</li>
-            </ul>
-          </div>
-          <div class="card scope-out">
-            <h3 class="pixel-label tiny">Not in v1</h3>
-            <ul>
-              <li>Live watcher / multi-harness runtime</li>
-              <li>In-browser dashboard or auth</li>
-              <li>This site as a platform console</li>
-              <li>Public product source tree (product repo may stay private)</li>
-            </ul>
+    </header>
+    <main id="main">
+      <section class="hero wrap" aria-labelledby="hero-title">
+        <div class="hero-copy">
+          <p class="eyebrow">A workflow toolkit for Claude Code</p>
+          <h1 id="hero-title">
+            Give AI speed.<br /><span>Keep human judgment.</span>
+          </h1>
+          <p class="hero-description">
+            Connect intent, implementation and review in Git. Your agent does
+            the work. Your team owns the decisions.
+          </p>
+          <div class="actions">
+            <a class="button primary" href="#example"
+              >Explore the workflow <span aria-hidden="true">↗</span></a
+            ><a class="text-link" href="docs/"
+              >Read the quickstart <span aria-hidden="true">→</span></a
+            >
           </div>
         </div>
-      </div>
-    </section>
-  </main>
+        <div class="hero-note">
+          <span class="mono">The repo is the record.</span>
+          <p>Plain-text artifacts.<br />Local checks.<br />Human acceptance.</p>
+        </div>
+      </section>
 
-  <footer id="footer" class="site-footer" role="contentinfo">
-    <div class="wrap footer-inner">
-      <p class="pixel-label tiny">ADE</p>
-      <p class="footer-links">
-        <a href="https://ade.ir/">ade.ir</a>
-        <span aria-hidden="true">·</span>
-        <a href="https://github.com/bhzdcz/ade">github.com/bhzdcz/ade</a>
-        <span aria-hidden="true">·</span>
-        <a href="https://github.com/bhzdcz/ade-site">ade-site</a>
+      <section
+        class="wrap example-section"
+        id="example"
+        aria-labelledby="example-title"
+      >
+        <div class="example-heading">
+          <h2 id="example-title">One change. A readable trail.</h2>
+          <span class="subtle">Interactive example: password reset</span>
+        </div>
+        <div class="artifact-workbench">
+          <div class="artifact-sidebar">
+            <div class="file-tabs" aria-label="Example artifacts">
+              <button
+                type="button"
+                class="file-tab selected"
+                data-artifact="intent"
+                aria-pressed="true"
+              >
+                <span class="file-symbol" aria-hidden="true">↳</span
+                ><span>intent.md<small>The problem worth solving</small></span>
+              </button>
+              <button
+                type="button"
+                class="file-tab"
+                data-artifact="spec"
+                aria-pressed="false"
+              >
+                <span class="file-symbol" aria-hidden="true">↳</span
+                ><span>spec.md<small>What done looks like</small></span>
+              </button>
+              <button
+                type="button"
+                class="file-tab"
+                data-artifact="plan"
+                aria-pressed="false"
+              >
+                <span class="file-symbol" aria-hidden="true">↳</span
+                ><span>plan.md<small>How to make the change</small></span>
+              </button>
+            </div>
+            <p class="artifact-note">
+              Example files, kept in draft.<br />Acceptance stays with a human.
+            </p>
+            <a class="text-link" href="downloads/password-reset.zip" download
+              >Download the example <span aria-hidden="true">↓</span></a
+            >
+          </div>
+          <div class="artifact-document" aria-live="polite" aria-atomic="true">
+            <div class="document-bar">
+              <span id="artifact-path" class="mono"
+                >password-reset / intent.md</span
+              ><span class="draft-label">Draft example</span>
+            </div>
+            <div id="artifact-content" class="document-body">
+              <p class="code-meta">status: draft</p>
+              <h3>Let users recover access</h3>
+              <h4>Problem</h4>
+              <p>
+                A user who forgets their password currently needs support to
+                regain access.
+              </p>
+              <h4>Proposed outcome</h4>
+              <p>
+                Users can request a reset email and choose a new password
+                without revealing whether an email address has an account.
+              </p>
+              <h4>Success criteria</h4>
+              <p>Expired and reused links cannot change a password.</p>
+            </div>
+          </div>
+        </div>
+        <p class="example-caption">
+          A worked example of ADE artifacts. The toolkit does not implement
+          authentication for you.
+        </p>
+        <noscript
+          ><p>
+            JavaScript is off.
+            <a href="docs/#example"
+              >Read all three example files in the docs.</a
+            >
+          </p></noscript
+        >
+      </section>
+
+      <section
+        class="section wrap workflow-section"
+        id="workflow"
+        aria-labelledby="workflow-title"
+      >
+        <div class="section-intro">
+          <h2 id="workflow-title">Fast code needs<br />a clear handoff.</h2>
+          <p>
+            A chat thread ends. The next engineer still needs to know why a
+            change exists and who accepted it.
+          </p>
+        </div>
+        <div class="workflow-list">
+          <article>
+            <span class="workflow-mark" aria-hidden="true">↳</span>
+            <div>
+              <h3>Make the request concrete.</h3>
+              <p>
+                Capture the problem, define the acceptance criteria, and agree
+                on a plan before implementation begins.
+              </p>
+              <span class="mono subtle">intent → spec → plan</span>
+            </div>
+          </article>
+          <article>
+            <span class="workflow-mark" aria-hidden="true">⌘</span>
+            <div>
+              <h3>Keep the work connected.</h3>
+              <p>
+                Claude Code works against the plan. Local hooks check supported
+                edits. Tests and findings travel with the pull request.
+              </p>
+              <span class="mono subtle">code + tests → review</span>
+            </div>
+          </article>
+          <article>
+            <span class="workflow-mark" aria-hidden="true">↺</span>
+            <div>
+              <h3>Leave judgment with people.</h3>
+              <p>
+                Your team reviews and releases. Capture what you learn as the
+                next intent, so improvements have a home.
+              </p>
+              <span class="mono subtle">human acceptance → next intent</span>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section
+        class="section wrap adoption-section"
+        aria-labelledby="adoption-title"
+      >
+        <div class="section-intro">
+          <h2 id="adoption-title">Fits the repo<br />you already have.</h2>
+          <p>
+            A small set of files around your existing workflow. No hosted
+            dashboard, model proxy or new system of record.
+          </p>
+          <a class="text-link" href="docs/#installation"
+            >See exactly what gets installed
+            <span aria-hidden="true">→</span></a
+          >
+        </div>
+        <div class="installation-block">
+          <div class="code-heading">
+            <span class="mono">Preview before you install</span
+            ><button type="button" class="copy-button" data-copy="install-code">
+              Copy
+            </button>
+          </div>
+          <pre id="install-code"><code>python3 /path/to/ade/ade init \
+  --project /path/to/your/repo \
+  --dry-run</code></pre>
+          <dl class="installation-details">
+            <div>
+              <dt>Own your context</dt>
+              <dd>Existing instructions and permissions are preserved.</dd>
+            </div>
+            <div>
+              <dt>Stay local</dt>
+              <dd>The ADE toolkit makes no network requests.</dd>
+            </div>
+            <div>
+              <dt>Inspect everything</dt>
+              <dd>Readable files, repeatable checks, a reviewable diff.</dd>
+            </div>
+          </dl>
+          <p class="small subtle">
+            Python 3.10+, Bash and Git. Claude Code runs the hooks. Toolkit
+            source access is currently by request.
+          </p>
+        </div>
+      </section>
+
+      <section
+        class="section wrap setup-section"
+        id="setup"
+        aria-labelledby="setup-title"
+      >
+        <div class="section-intro">
+          <p class="eyebrow">Start small. Make it useful.</p>
+          <h2 id="setup-title">
+            A toolkit you can own.<br />Help when you want it.
+          </h2>
+          <p>
+            Explore the workflow for free. Bring the maintainer in when you want
+            it adapted to your team.
+          </p>
+        </div>
+        <div class="offer-grid">
+          <article class="offer self-serve">
+            <p class="mono subtle">Explore ADE</p>
+            <h3>Start with a real example.</h3>
+            <p class="price">Free<span>public walkthrough</span></p>
+            <p>
+              Read the approach, download the artifacts, and decide whether it
+              fits your workflow.
+            </p>
+            <ul class="check-list">
+              <li>Intent, spec and plan example</li>
+              <li>Public quickstart and trust boundaries</li>
+              <li>No account needed to explore</li>
+            </ul>
+            <a class="button secondary" href="docs/"
+              >Open the docs <span aria-hidden="true">↗</span></a
+            >
+            <p class="small subtle">
+              The core is private today. An MIT release is planned;
+              <a href="mailto:behzad@airoweb.com?subject=ADE%20toolkit%20access"
+                >request source access</a
+              >.
+            </p>
+          </article>
+          <article class="offer guided">
+            <p class="mono accent">Work with the maintainer</p>
+            <h3>Make it fit your team.</h3>
+            <p class="price">€490<span>proposed one-repo setup</span></p>
+            <p>
+              A focused engagement to establish a workflow your team can
+              actually use.
+            </p>
+            <ul class="check-list">
+              <li>Review your current workflow</li>
+              <li>Install and tailor one repository</li>
+              <li>One example change and a handover</li>
+              <li>One follow-up within seven days</li>
+            </ul>
+            <a class="button primary" href="#inquiry"
+              >Prepare a setup inquiry <span aria-hidden="true">↗</span></a
+            >
+            <p class="small subtle">
+              Scope, availability and applicable taxes confirmed before payment.
+              No charge on this site.
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <section
+        class="section wrap inquiry-section"
+        id="inquiry"
+        aria-labelledby="inquiry-title"
+      >
+        <div class="section-intro">
+          <h2 id="inquiry-title">Tell me where<br />the workflow breaks.</h2>
+          <p>
+            Prepare a short brief for Behzad, ADE’s maintainer. You can review
+            it before opening your email app.
+          </p>
+          <a href="mailto:behzad@airoweb.com" class="text-link contact-link"
+            >behzad@airoweb.com <span aria-hidden="true">↗</span></a
+          >
+          <p class="small subtle">
+            No account or repository access required. Keep private code and
+            credentials out of your brief.
+          </p>
+        </div>
+        <form id="inquiry-form" class="inquiry-form">
+          <fieldset id="inquiry-fields" disabled>
+            <div class="field-row">
+              <label
+                >Team size<select name="team" required>
+                  <option value="Solo developer">Solo developer</option>
+                  <option value="2-5 engineers">2-5 engineers</option>
+                  <option value="6-15 engineers">6-15 engineers</option>
+                  <option value="16+ engineers">16+ engineers</option>
+                </select></label
+              ><label
+                >Your stack<input
+                  name="stack"
+                  maxlength="160"
+                  placeholder="e.g. Python, FastAPI"
+                  required
+              /></label>
+            </div>
+            <label
+              >What would you like to improve?<textarea
+                name="problem"
+                rows="4"
+                minlength="10"
+                maxlength="2000"
+                placeholder="Where do plans, implementation or reviews lose the thread?"
+                required
+              ></textarea>
+            </label>
+            <button class="button primary" type="submit">
+              Preview my inquiry <span aria-hidden="true">→</span>
+            </button>
+          </fieldset>
+          <p class="small subtle">
+            This form runs in your browser. Nothing is sent or saved by ADE.
+            <a href="privacy/">Privacy details</a>
+          </p>
+          <div id="inquiry-preview" class="inquiry-preview" hidden>
+            <h3>Your inquiry is ready to review.</h3>
+            <pre id="inquiry-text"></pre>
+            <div class="actions">
+              <a
+                id="send-inquiry"
+                class="button primary"
+                href="mailto:behzad@airoweb.com"
+                >Open email app <span aria-hidden="true">↗</span></a
+              ><button
+                type="button"
+                class="button secondary"
+                data-copy="inquiry-text"
+              >
+                Copy brief
+              </button>
+            </div>
+            <p class="small subtle">
+              Your email app opens a draft. You choose when to send it.
+            </p>
+          </div>
+          <noscript
+            ><p>
+              <a href="mailto:behzad@airoweb.com?subject=ADE%20setup%20inquiry"
+                >Email your team size, stack and workflow problem to Behzad.</a
+              >
+            </p></noscript
+          >
+        </form>
+      </section>
+
+      <section class="section wrap faq-section" aria-labelledby="faq-title">
+        <h2 id="faq-title">A few things<br />to know.</h2>
+        <div class="faq-list">
+          <details>
+            <summary>Is ADE another coding agent?</summary>
+            <p>
+              No. ADE is the workflow around Claude Code: artifacts, a small
+              CLI, checks and review practices. Bring your own Claude Code
+              access and existing development tools.
+            </p>
+          </details>
+          <details>
+            <summary>Can I use it in an existing project?</summary>
+            <p>
+              Yes. The installer targets an existing Git repository, preserves
+              your settings and offers a dry run. It refuses to overwrite
+              conflicting runtime files. Start with one small change.
+            </p>
+          </details>
+          <details>
+            <summary>Do the hooks enforce production security?</summary>
+            <p>
+              They check local workflow conditions for supported tools. Files
+              and hooks are editable, so they do not authenticate reviewers or
+              prevent every bypass. Use protected branches and deployment
+              environments for real authorization. ADE's promote script is a
+              simulation.
+            </p>
+          </details>
+          <details>
+            <summary>Is the toolkit open source?</summary>
+            <p>
+              The core repository is private today. A tested MIT release is the
+              proposed direction. Public docs and examples are available here
+              now; email Behzad to request toolkit access. The website source is
+              public.
+            </p>
+          </details>
+          <details>
+            <summary>What is included in the setup service?</summary>
+            <p>
+              One workflow review, installation in one repository, one tailored
+              example, a handover session and one follow-up within seven days.
+              Application feature work, production deployment, unlimited support
+              and AI subscription costs are excluded. Agree the scope and terms
+              in writing before paying.
+            </p>
+          </details>
+          <details>
+            <summary>Can I support the project?</summary>
+            <p>
+              Yes. Try the example, share useful feedback, or contribute to the
+              public website. Financial support options will appear when the
+              maintainer has configured them.
+              <a href="support/">See ways to help.</a>
+            </p>
+          </details>
+        </div>
+      </section>
+    </main>
+    <footer class="site-footer wrap">
+      <div class="footer-brand">
+        <a href="./" class="logo" aria-label="ADE home"
+          >ADE<span class="logo-caption" aria-hidden="true">/</span></a
+        >
+        <p>Reviewable AI work.<br />In your repository.</p>
+      </div>
+      <div class="footer-links">
+        <a href="docs/">Documentation</a><a href="support/">Support ADE</a
+        ><a href="https://github.com/bhzdcz/ade-site">Website source ↗</a
+        ><a href="privacy/">Privacy</a
+        ><a href="mailto:behzad@airoweb.com">Contact</a>
+      </div>
+      <p class="footer-legal">
+        © 2026 Behzad. Independent project; not affiliated with Anthropic or
+        GitHub.
       </p>
-      <p class="muted small">© 2026 ADE · MIT · Pixel colophon: 4px texels, dark-first.</p>
-    </div>
-  </footer>
-
-  <script src="main.js" defer></script>
-</body>
+    </footer>
+    <p id="copy-status" class="toast" role="status" aria-live="polite"></p>
+  </body>
 </html>
