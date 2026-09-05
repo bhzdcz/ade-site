@@ -251,20 +251,36 @@ a:hover {
 
 .hero-title .texel {
   display: inline-block;
-  opacity: 0;
-  transform: translateY(8px);
-}
-
-.hero.is-ready .texel,
-.hero.reduce-motion .texel {
+  /* Visible by default (no-JS / CSS-only). Animation is progressive enhancement. */
   opacity: 1;
   transform: none;
 }
 
+/* Animate only when JS is present and the user allows motion. */
 @media (prefers-reduced-motion: no-preference) {
-  .hero.is-ready .texel {
+  html.js .hero:not(.is-ready) .texel {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+
+  html.js .hero.is-ready .texel {
     animation: texel-in 0.45s steps(4, end) forwards;
     animation-delay: calc(var(--i) * 120ms);
+  }
+}
+
+/* Final static state without relying on JS classes. */
+@media (prefers-reduced-motion: reduce) {
+  .hero-title .texel {
+    opacity: 1;
+    transform: none;
+    animation: none;
+  }
+
+  .btn-primary:hover,
+  .btn-secondary:hover {
+    transform: none;
+    box-shadow: none;
   }
 }
 
