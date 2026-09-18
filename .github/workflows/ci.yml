@@ -1,0 +1,78 @@
+name: CI
+
+on:
+  pull_request:
+  push:
+    branches: [main, 'feat/**']
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    name: Validate site kit
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Install ripgrep
+        run: sudo apt-get update -qq && sudo apt-get install -y -qq ripgrep
+
+      - name: Assert required files exist
+        run: |
+          set -euo pipefail
+          required=(index.html styles.css main.js CNAME LICENSE README.md)
+          missing=0
+          for f in "${required[@]}"; do
+            if [[ ! -f "$f" ]]; then
+              echo "::error::Missing required file: $f"
+              missing=1
+            else
+              echo "OK: $f"
+            fi
+          done
+          exit "$missing"
+
+      - name: Ban commercial / private-repo CTAs
+        run: |
+          set -euo pipefail
+          # Scan public kit surface for forbidden CTA / monetization wording.
+          # "Paid setup" is allowed only when it appears under Not-in-v1 list wording.
+          files=(index.html styles.css main.js README.md)
+          banned_re='Buy now|Buy |checkout|Sponsors button|Become a sponsor|request access|private repo|may stay private|Bitcoin|payment|Subscribe|Pricing'
+          hits=$(rg -n -i --pcre2 "$banned_re" "${files[@]}" || true)
+          if [[ -n "$hits" ]]; then
+            echo "::error::Banned CTA / monetization strings found:"
+            echo "$hits"
+            exit 1
+          fi
+
+          # Paid setup: every match must sit under Not-in-v1 / Not in v1 wording
+          while IFS= read -r line; do
+            [[ -z "$line" ]] && continue
+            file="${line%%:*}"
+            rest="${line#*:}"
+            lineno="${rest%%:*}"
+            start=$((lineno > 5 ? lineno - 5 : 1))
+            end=$((lineno + 2))
+            window=$(sed -n "${start},${end}p" "$file")
+            if ! echo "$window" | rg -qi 'Not[- ]?in[- ]?v1'; then
+              echo "::error::Paid setup found outside Not-in-v1 context: $line"
+              exit 1
+            fi
+            echo "OK Paid setup under Not-in-v1: $line"
+          done < <(rg -n -i 'Paid setup' "${files[@]}" || true)
+
+          echo "CTA ban checks passed."
+
+      - name: Basic HTML sanity
+        run: |
+          set -euo pipefail
+          # Lightweight structure checks — no deploy
+          rg -q '<!DOCTYPE html>' index.html
+          rg -q '<html' index.html
+          rg -q '</html>' index.html
+          rg -q 'styles\.css' index.html
+          rg -q 'main\.js' index.html
+          echo "HTML sanity OK."
