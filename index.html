@@ -3,17 +3,17 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>ADE — AI-native SDLC</title>
-  <meta name="description" content="ADE: AI-native SDLC — artifacts on rails, humans at the gates. Intent → spec → plan → review → gates." />
+  <title>ADE — public OSS SDLC kit</title>
+  <meta name="description" content="ADE is a public open-source AI-native SDLC kit: artifacts on rails, humans at the gates. Clone it, follow how-to-run, ship with templates and hooks." />
   <link rel="canonical" href="https://ade.ir/" />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://ade.ir/" />
-  <meta property="og:title" content="ADE — AI-native SDLC" />
-  <meta property="og:description" content="AI-native SDLC — artifacts on rails, humans at the gates." />
+  <meta property="og:title" content="ADE — public OSS SDLC kit" />
+  <meta property="og:description" content="Public open-source AI-native SDLC kit — artifacts on rails, humans at the gates. Clone and run." />
   <meta property="og:image" content="https://ade.ir/assets/og.png" />
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="ADE — AI-native SDLC" />
-  <meta name="twitter:description" content="AI-native SDLC — artifacts on rails, humans at the gates." />
+  <meta name="twitter:title" content="ADE — public OSS SDLC kit" />
+  <meta name="twitter:description" content="Public open-source AI-native SDLC kit — artifacts on rails, humans at the gates." />
   <meta name="twitter:image" content="https://ade.ir/assets/og.png" />
   <meta name="theme-color" content="#0B0D12" />
   <link rel="stylesheet" href="styles.css" />
@@ -28,9 +28,9 @@
         <span class="pixel-label">ADE</span>
       </a>
       <nav class="mini-rail" aria-label="Sections">
-        <a href="#problem">Problem</a>
+        <a href="#what">What</a>
         <a href="#chain">Chain</a>
-        <a href="#how">How</a>
+        <a href="#install">Install</a>
         <a href="#scope">Scope</a>
       </nav>
     </div>
@@ -39,24 +39,26 @@
   <main id="main">
     <section id="hero" class="section hero" aria-labelledby="hero-title">
       <div class="wrap hero-inner">
-        <p class="pixel-label hero-kicker">AI-NATIVE SDLC</p>
+        <p class="pixel-label hero-kicker">PUBLIC OSS KIT</p>
         <h1 id="hero-title" class="hero-title" data-hero-wordmark>
           <span class="texel" style="--i:0">A</span><span class="texel" style="--i:1">D</span><span class="texel" style="--i:2">E</span>
         </h1>
-        <p class="hero-value">AI-native SDLC — artifacts on rails, humans at the gates</p>
+        <p class="hero-value">AI-native SDLC kit — artifacts on rails, humans at the gates. Clone it and run.</p>
         <div class="cta-row">
           <a class="btn btn-primary" href="https://github.com/bhzdcz/ade">View on GitHub</a>
-          <a class="btn btn-secondary" href="https://github.com/bhzdcz/ade/blob/main/docs/how-to-run.md">How to run</a>
+          <a class="btn btn-secondary" href="https://github.com/bhzdcz/ade/blob/main/docs/how-to-run.md">Install</a>
+          <a class="btn btn-secondary" href="https://github.com/bhzdcz/ade/blob/main/docs/kit-map.md">Docs</a>
         </div>
-        <a class="scroll-hint" href="#problem" aria-label="Scroll to problem">
+        <a class="scroll-hint" href="#what" aria-label="Scroll to what">
           <span class="chevron" aria-hidden="true"></span>
         </a>
       </div>
     </section>
 
-    <section id="problem" class="section" aria-labelledby="problem-title">
+    <section id="what" class="section" aria-labelledby="what-title">
       <div class="wrap">
-        <h2 id="problem-title" class="pixel-label section-label">Problem</h2>
+        <h2 id="what-title" class="pixel-label section-label">What</h2>
+        <p class="lede">ADE is a <strong>public open-source playbook/kit</strong> you clone and run in your own repo — not a hosted SaaS, not an agent IDE. Chat is not the source of truth; markdown artifacts on a rail are.</p>
         <div class="panel grid-3">
           <article class="card">
             <h3>Chat isn’t a handoff</h3>
@@ -77,7 +79,7 @@
     <section id="chain" class="section" aria-labelledby="chain-title">
       <div class="wrap">
         <h2 id="chain-title" class="pixel-label section-label">Artifact chain</h2>
-        <p class="lede">One loop. Artifacts on rails — not a roster of chat personas.</p>
+        <p class="lede">One loop. Artifacts on rails — humans stay at the gates.</p>
         <ol class="chain-rail" data-chain-rail>
           <li class="chain-node" data-node="intent"><span class="node-dot"></span><span class="node-name">intent</span><span class="node-cap">What we want</span></li>
           <li class="chain-node" data-node="spec"><span class="node-dot"></span><span class="node-name">spec</span><span class="node-cap">What “done” means</span></li>
@@ -91,25 +93,31 @@
       </div>
     </section>
 
-    <section id="how" class="section" aria-labelledby="how-title">
+    <section id="install" class="section" aria-labelledby="install-title">
       <div class="wrap">
-        <h2 id="how-title" class="pixel-label section-label">How it runs</h2>
-        <div class="panel how-grid">
-          <article class="card">
-            <h3>Git + Claude Code + PRs</h3>
-            <p>Work lives in the repo. Agents propose; pull requests carry the diff. No separate console pretending to be the source of truth.</p>
-          </article>
-          <article class="card">
-            <h3>Hooks as must-holds</h3>
-            <p>Automated checks hold the line on structure and contracts so humans spend attention on judgment, not ritual.</p>
-          </article>
-          <article class="card">
-            <h3>Humans at the gates</h3>
-            <p>Review and accept/reject stay with people. The rail moves artifacts; it does not replace ownership.</p>
-          </article>
-        </div>
+        <h2 id="install-title" class="pixel-label section-label">Install</h2>
+        <p class="lede">Three steps on a clean machine. Full detail in <a href="https://github.com/bhzdcz/ade/blob/main/docs/how-to-run.md">docs/how-to-run.md</a>.</p>
+        <ol class="install-steps panel">
+          <li>
+            <h3>Clone</h3>
+            <p>HTTPS first:</p>
+            <pre class="code-block"><code>git clone https://github.com/bhzdcz/ade.git
+cd ade</code></pre>
+          </li>
+          <li>
+            <h3>Read how-to-run</h3>
+            <p>Prerequisites, happy path, and validation live in the repo docs.</p>
+          </li>
+          <li>
+            <h3>Validate</h3>
+            <pre class="code-block"><code>bash tests/validate-templates.sh
+bash tests/validate-hooks.sh</code></pre>
+          </li>
+        </ol>
         <div class="cta-row">
           <a class="btn btn-secondary" href="https://github.com/bhzdcz/ade/blob/main/docs/how-to-run.md">How to run</a>
+          <a class="btn btn-secondary" href="https://github.com/bhzdcz/ade/blob/main/docs/kit-map.md">Kit map</a>
+          <a class="btn btn-secondary" href="https://github.com/bhzdcz/ade/tree/main/docs">Docs</a>
         </div>
       </div>
     </section>
@@ -121,19 +129,19 @@
           <div class="card scope-in">
             <h3 class="pixel-label tiny">In v1</h3>
             <ul>
-              <li>Playbook loop &amp; artifact contracts</li>
-              <li>Hooks as must-holds</li>
-              <li>Dogfood on real intents</li>
-              <li>This marketing landing (links only)</li>
+              <li>Public OSS kit: playbook loop &amp; artifact templates</li>
+              <li>Hooks as must-holds + validate scripts</li>
+              <li>WidgetCo fictional worked example</li>
+              <li>This product site (ade.ir) linking GitHub / Install / Docs</li>
             </ul>
           </div>
           <div class="card scope-out">
             <h3 class="pixel-label tiny">Not in v1</h3>
             <ul>
+              <li>Hosted SaaS or in-browser console</li>
+              <li>Paid setup or hard-sell CTAs</li>
               <li>Live watcher / multi-harness runtime</li>
-              <li>In-browser dashboard or auth</li>
-              <li>This site as a platform console</li>
-              <li>Public product source tree (product repo may stay private)</li>
+              <li>AI-DD merge or airoweb coupling</li>
             </ul>
           </div>
         </div>
@@ -147,11 +155,13 @@
       <p class="footer-links">
         <a href="https://ade.ir/">ade.ir</a>
         <span aria-hidden="true">·</span>
-        <a href="https://github.com/bhzdcz/ade">github.com/bhzdcz/ade</a>
+        <a href="https://github.com/bhzdcz/ade">GitHub ade</a>
         <span aria-hidden="true">·</span>
-        <a href="https://github.com/bhzdcz/ade-site">ade-site</a>
+        <a href="https://github.com/bhzdcz/ade-site">GitHub ade-site</a>
+        <span aria-hidden="true">·</span>
+        <a href="https://github.com/bhzdcz/ade-site/blob/main/LICENSE">Apache-2.0</a>
       </p>
-      <p class="muted small">© 2026 ADE · MIT · Pixel colophon: 4px texels, dark-first.</p>
+      <p class="muted small">© 2026 ADE · Licensed under Apache-2.0 · Pixel colophon: 4px texels, dark-first.</p>
     </div>
   </footer>
 
