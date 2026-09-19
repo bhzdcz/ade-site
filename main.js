@@ -72,7 +72,6 @@
     if (!ctx) return;
 
     var rootStyles = getComputedStyle(document.documentElement);
-    var BG = rootStyles.getPropertyValue('--bg').trim() || '#0B0D12';
     var LINE = rootStyles.getPropertyValue('--line').trim() || '#2A3142';
     var ACCENT = rootStyles.getPropertyValue('--accent').trim() || '#5CFF9A';
     var ACCENT2 = rootStyles.getPropertyValue('--accent-2').trim() || '#6BCBFF';
@@ -91,8 +90,11 @@
     var visible = true;
     var running = false;
     var rafId = 0;
-    var lastTs = 0;
     var nextPulseAt = 0;
+    // Accumulated motion time — preserved across IO pause so drift phase
+    // does not jump when the hero re-enters the viewport.
+    var elapsedSec = 0;
+    var runningSince = 0;
 
     function mulberry32(a) {
       return function () {
@@ -128,33 +130,52 @@
       cols = Math.max(1, Math.ceil(cssW / STEP));
       rows = Math.max(1, Math.ceil(cssH / STEP));
       var total = cols * rows;
-      // Target ~8% occupancy (within 5–12%); cap count on large viewports
-      var target = Math.round(total * 0.08);
-      target = Math.max(12, Math.min(target, 220));
+      // Target ~8% of grid *area* (within 5–12%); size²-weighted
+      var targetArea = Math.round(total * 0.08);
+      targetArea = Math.max(16, Math.min(targetArea, Math.round(total * 0.12)));
 
       var rng = mulberry32((cols * 73856093) ^ (rows * 19349663) ^ 0xade5);
       cells = [];
       var occupied = Object.create(null);
+      var covered = 0;
       var attempts = 0;
       var sizes = [1, 1, 1, 1, 2, 2, 4];
 
-      while (cells.length < target && attempts < target * 20) {
+      while (covered < targetArea && attempts < targetArea * 40) {
         attempts += 1;
         var size = sizes[(rng() * sizes.length) | 0];
         var c = (rng() * (cols - size + 1)) | 0;
         var r = (rng() * (rows - size + 1)) | 0;
-        var key = c + ',' + r + ',' + size;
-        if (occupied[key]) continue;
+        // Reject if any covered cell overlaps existing placement
+        var blocked = false;
+        var dc;
+        var dr;
+        for (dr = 0; dr < size && !blocked; dr++) {
+          for (dc = 0; dc < size; dc++) {
+            if (occupied[(c + dc) + ',' + (r + dr)]) {
+              blocked = true;
+              break;
+            }
+          }
+        }
+        if (blocked) continue;
         // Bias slightly toward the right half (mock: field denser right of copy)
         if (c / cols < 0.28 && rng() > 0.35) continue;
-        occupied[key] = 1;
+        for (dr = 0; dr < size; dr++) {
+          for (dc = 0; dc < size; dc++) {
+            occupied[(c + dc) + ',' + (r + dr)] = 1;
+          }
+        }
+        covered += size * size;
         var isAccent2 = rng() > 0.55;
+        // vx in cells/s: full hero-width cross in ~20–40s
+        // (cols / crossSec ≈ cssW / (crossSec * STEP))
+        var crossSec = 20 + rng() * 20;
         cells.push({
           c: c,
           r: r,
           size: size,
-          // Drift: ~20–40s to cross hero width → cells/sec
-          vx: (0.012 + rng() * 0.018) * (rng() > 0.15 ? 1 : -1),
+          vx: (cols / crossSec) * (rng() > 0.15 ? 1 : -1),
           baseAlpha: 0.18 + rng() * 0.32,
           color: isAccent2 ? accent2Rgb : accentRgb,
           phase: rng() * Math.PI * 2
@@ -269,9 +290,7 @@
 
     function tick(now) {
       if (!running) return;
-      if (!lastTs) lastTs = now;
-      var t = (now - startWall) / 1000;
-      lastTs = now;
+      var t = elapsedSec + (now - runningSince) / 1000;
 
       if (t >= nextPulseAt) {
         spawnPulse(t);
@@ -281,18 +300,21 @@
       rafId = requestAnimationFrame(tick);
     }
 
-    var startWall = performance.now();
-
     function start() {
       if (running || reduceMotion) return;
       running = true;
-      lastTs = 0;
-      startWall = performance.now();
-      nextPulseAt = 3 + Math.random() * 4;
+      runningSince = performance.now();
+      // Only schedule the first pulse window; later resumes keep nextPulseAt
+      if (nextPulseAt === 0) {
+        nextPulseAt = elapsedSec + 3 + Math.random() * 4;
+      }
       rafId = requestAnimationFrame(tick);
     }
 
     function stop() {
+      if (running) {
+        elapsedSec += (performance.now() - runningSince) / 1000;
+      }
       running = false;
       if (rafId) {
         cancelAnimationFrame(rafId);
