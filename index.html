@@ -4,16 +4,16 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>ADE — public OSS SDLC kit</title>
-  <meta name="description" content="ADE is a public open-source AI-native SDLC kit: artifacts on rails, humans at the gates. Clone it, follow how-to-run, ship with templates and hooks." />
+  <meta name="description" content="ADE is a public open-source AI-native software development lifecycle (SDLC) kit. Clone it, follow how-to-run, ship with templates and hooks." />
   <link rel="canonical" href="https://ade.ir/" />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://ade.ir/" />
   <meta property="og:title" content="ADE — public OSS SDLC kit" />
-  <meta property="og:description" content="Public open-source AI-native SDLC kit — artifacts on rails, humans at the gates. Clone and run." />
+  <meta property="og:description" content="Public open-source AI-native software development lifecycle (SDLC) kit. Clone and run." />
   <meta property="og:image" content="https://ade.ir/assets/og.png" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="ADE — public OSS SDLC kit" />
-  <meta name="twitter:description" content="Public open-source AI-native SDLC kit — artifacts on rails, humans at the gates." />
+  <meta name="twitter:description" content="Public open-source AI-native software development lifecycle (SDLC) kit." />
   <meta name="twitter:image" content="https://ade.ir/assets/og.png" />
   <meta name="theme-color" content="#0B0D12" />
   <link rel="stylesheet" href="styles.css" />
@@ -43,7 +43,7 @@
         <h1 id="hero-title" class="hero-title" data-hero-wordmark>
           <span class="texel" style="--i:0">A</span><span class="texel" style="--i:1">D</span><span class="texel" style="--i:2">E</span>
         </h1>
-        <p class="hero-value">AI-native SDLC kit — artifacts on rails, humans at the gates. Clone it and run.</p>
+        <p class="hero-value">AI-native software development lifecycle (SDLC) kit — artifacts on rails, humans at the gates. Clone it and run.</p>
         <div class="cta-row">
           <a class="btn btn-primary" href="https://github.com/bhzdcz/ade">View on GitHub</a>
           <a class="btn btn-secondary" href="https://github.com/bhzdcz/ade/blob/main/docs/how-to-run.md">Install</a>
@@ -62,15 +62,15 @@
         <div class="panel grid-3">
           <article class="card">
             <h3>Chat isn’t a handoff</h3>
-            <p>Thread history is not a durable artifact. Decisions vanish; next agent (or human) starts cold.</p>
+            <p>Thread chat fades; durable decisions need artifacts the next person can open.</p>
           </article>
           <article class="card">
             <h3>Code isn’t the bottleneck</h3>
-            <p>Models write fast. The hard parts are intent, review judgment, and keeping the loop honest.</p>
+            <p>Models draft quickly; intent, review, and an honest loop usually take more care.</p>
           </article>
           <article class="card">
             <h3>Controls assume a human did every step</h3>
-            <p>Classic process gates don’t fit AI-assisted work. You need rails that still leave humans at the gates.</p>
+            <p>Classic gates assume a human did every step. AI-assisted work still needs rails — and people at the gates.</p>
           </article>
         </div>
       </div>
@@ -79,14 +79,14 @@
     <section id="chain" class="section" aria-labelledby="chain-title">
       <div class="wrap">
         <h2 id="chain-title" class="pixel-label section-label">Artifact chain</h2>
-        <p class="lede">One loop. Artifacts on rails — humans stay at the gates.</p>
+        <p class="lede">One loop. Artifacts move in order; people keep the judgment calls.</p>
         <ol class="chain-rail" data-chain-rail>
           <li class="chain-node" data-node="intent"><span class="node-dot"></span><span class="node-name">intent</span><span class="node-cap">What we want</span></li>
           <li class="chain-node" data-node="spec"><span class="node-dot"></span><span class="node-name">spec</span><span class="node-cap">What “done” means</span></li>
           <li class="chain-node" data-node="plan"><span class="node-dot"></span><span class="node-name">plan</span><span class="node-cap">How we’ll ship</span></li>
           <li class="chain-node" data-node="diff"><span class="node-dot"></span><span class="node-name">diff+tests</span><span class="node-cap">The change</span></li>
           <li class="chain-node" data-node="review"><span class="node-dot"></span><span class="node-name">REVIEW</span><span class="node-cap">Human judgment</span></li>
-          <li class="chain-node chain-node--gate" data-node="gates"><span class="node-dot"></span><span class="node-name">gates</span><span class="node-cap">Must-holds</span></li>
+          <li class="chain-node chain-node--gate" data-node="gates"><span class="node-dot"></span><span class="node-name">gates</span><span class="node-cap">must-pass gates</span></li>
           <li class="chain-node" data-node="maintain"><span class="node-dot"></span><span class="node-name">Maintain</span><span class="node-cap">Keep it true</span></li>
           <li class="chain-node chain-node--loop" data-node="new-intent"><span class="node-dot"></span><span class="node-name">new intent</span><span class="node-cap">Loop again</span></li>
         </ol>
@@ -106,7 +106,7 @@ cd ade</code></pre>
           </li>
           <li>
             <h3>Read how-to-run</h3>
-            <p>Prerequisites, happy path, and validation live in the repo docs.</p>
+            <p>Prerequisites, step-by-step flow, and validation live in the repo docs.</p>
           </li>
           <li>
             <h3>Validate</h3>
@@ -130,8 +130,8 @@ bash tests/validate-hooks.sh</code></pre>
             <h3 class="pixel-label tiny">In v1</h3>
             <ul>
               <li>Public OSS kit: playbook loop &amp; artifact templates</li>
-              <li>Hooks as must-holds + validate scripts</li>
-              <li>WidgetCo fictional worked example</li>
+              <li>Hooks as must-pass gates + validate scripts</li>
+              <li>WidgetCo — fictional worked example (weekly status-digest walkthrough in the repo)</li>
               <li>This product site (ade.ir) linking GitHub / Install / Docs</li>
             </ul>
           </div>
@@ -141,7 +141,6 @@ bash tests/validate-hooks.sh</code></pre>
               <li>Hosted SaaS or in-browser console</li>
               <li>Paid setup or hard-sell CTAs</li>
               <li>Live watcher / multi-harness runtime</li>
-              <li>AI-DD merge or airoweb coupling</li>
             </ul>
           </div>
         </div>
@@ -161,7 +160,7 @@ bash tests/validate-hooks.sh</code></pre>
         <span aria-hidden="true">·</span>
         <a href="https://github.com/bhzdcz/ade-site/blob/main/LICENSE">Apache-2.0</a>
       </p>
-      <p class="muted small">© 2026 ADE · Licensed under Apache-2.0 · Pixel colophon: 4px texels, dark-first.</p>
+      <p class="muted small">© 2026 ADE · Licensed under Apache-2.0</p>
     </div>
   </footer>
 
