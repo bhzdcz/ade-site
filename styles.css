@@ -229,9 +229,38 @@ a:hover {
   display: flex;
   align-items: center;
   position: relative;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.hero-pixel-field {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Soft scrim so copy stays readable over the field */
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background: linear-gradient(
+    90deg,
+    color-mix(in srgb, var(--bg) 70%, transparent) 0%,
+    color-mix(in srgb, var(--bg) 45%, transparent) 32%,
+    color-mix(in srgb, var(--bg) 12%, transparent) 58%,
+    transparent 78%
+  );
 }
 
 .hero-inner {
+  position: relative;
+  z-index: 2;
   text-align: left;
 }
 
